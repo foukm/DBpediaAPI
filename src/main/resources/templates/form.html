@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DBpedia Spotlight Annotation</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #89f7fe, #66a6ff);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .card {
+            border-radius: 15px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        textarea {
+            border-radius: 10px;
+            resize: none;
+        }
+        .btn-custom {
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            border: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .btn-custom:hover {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+        }
+    </style>
+</head>
+<body>
+
+<div class="card p-4 w-50">
+    <h2 class="text-center text-dark fw-bold">DBpedia Spotlight Annotation</h2>
+
+    <!-- Μήνυμα λάθους με animation αν υπάρχει -->
+    <p th:if="${error}" th:text="${error}" class="text-danger text-center fw-semibold mt-2"></p>
+
+    <form th:action="@{/annotate}" method="post">
+        <div class="mb-3">
+            <label for="text" class="form-label fw-semibold">Enter Text:</label>
+            <textarea class="form-control p-3" id="text" name="text" rows="4" placeholder="Type your text here..."></textarea>
+        </div>
+
+        <div class="d-grid">
+            <button type="submit" class="btn btn-custom py-2">✨ Annotate ✨</button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
